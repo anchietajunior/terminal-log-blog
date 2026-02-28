@@ -1,0 +1,10 @@
+<div class="toolbar">
+  <a href="{{ '/' | relative_url }}"><button>&#128196; Home</button></a>
+  <a href="{{ '/about' | relative_url }}"><button>&#128100; About</button></a>
+  <a href="{{ '/feed.xml' | relative_url }}"><button>&#128225; RSS</button></a>
+  <div class="toolbar-separator"></div>
+  <span class="toolbar-address">
+    <label for="address-bar">Address:</label>
+    <input id="address-bar" type="text" value="C:\Blog\{{ page.title | default: 'Home' | replace: ' ', '_' }}" readonly class="address-input">
+  </span>
+</div>

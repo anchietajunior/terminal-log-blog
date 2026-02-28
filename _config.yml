@@ -1,0 +1,38 @@
+title: "José Anchieta - Terminal Log"
+description: "Welcome! I write about software engineering, AI research, and what I learn from teaching. Pull up a chair and browse around."
+url: ""
+baseurl: ""
+author:
+  name: "Jose Anchieta"
+  bio: "Software Engineer · University Lecturer · AI Graduate Student"
+
+permalink: /:year/:month/:day/:title/
+timezone: America/Sao_Paulo
+
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"

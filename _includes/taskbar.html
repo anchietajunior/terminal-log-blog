@@ -1,0 +1,42 @@
+<div class="taskbar">
+  <button class="start-button" id="start-btn">
+    <span class="start-icon">&#129695;</span>
+    <strong>Start</strong>
+  </button>
+  <div class="taskbar-divider"></div>
+  <div class="taskbar-programs">
+    <button class="taskbar-program active">
+      &#128196; {{ page.title | default: site.title }}
+    </button>
+  </div>
+  <div class="taskbar-tray">
+    <span class="tray-item" id="clock"></span>
+  </div>
+
+  <div class="start-menu" id="start-menu">
+    <div class="start-menu-sidebar">
+      <span class="sidebar-text">{{ site.title }}</span>
+    </div>
+    <div class="start-menu-items">
+      <a href="{{ '/' | relative_url }}" class="start-menu-item">
+        <span class="menu-icon">&#128196;</span> Recent Posts
+      </a>
+      <a href="{{ '/about' | relative_url }}" class="start-menu-item">
+        <span class="menu-icon">&#128100;</span> About Me
+      </a>
+      <a href="{{ '/feed.xml' | relative_url }}" class="start-menu-item">
+        <span class="menu-icon">&#128225;</span> RSS Feed
+      </a>
+      <div class="start-menu-divider"></div>
+      {% for post in site.posts limit:3 %}
+      <a href="{{ post.url | relative_url }}" class="start-menu-item">
+        <span class="menu-icon">&#128462;</span> {{ post.title | truncatewords: 4 }}
+      </a>
+      {% endfor %}
+      <div class="start-menu-divider"></div>
+      <a href="https://github.com" class="start-menu-item" target="_blank">
+        <span class="menu-icon">&#128190;</span> GitHub
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+---
+layout: default
+window_title: "{{ page.title }} — Notepad"
+---
+<article class="post-article">
+  <div class="post-header-bar">
+    <span class="post-date-badge">{{ page.date | date: "%d/%m/%Y" }}</span>
+    {% for cat in page.categories %}
+      <span class="post-category-badge">{{ cat }}</span>
+    {% endfor %}
+  </div>
+
+  <h1 class="post-title">{{ page.title }}</h1>
+  {% if page.subtitle %}
+    <p class="post-subtitle">{{ page.subtitle }}</p>
+  {% endif %}
+
+  <hr>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <hr>
+
+  <div class="post-footer-meta">
+    <p>Written by <strong>{{ page.author | default: site.author.name }}</strong> on {{ page.date | date: "%B %d, %Y" }}.</p>
+  </div>
+</article>
+
+<div class="post-nav-bar">
+  {% if page.previous.url %}
+    <a href="{{ page.previous.url | relative_url }}" class="post-nav-link">
+      <button>&laquo; {{ page.previous.title | truncatewords: 5 }}</button>
+    </a>
+  {% endif %}
+  {% if page.next.url %}
+    <a href="{{ page.next.url | relative_url }}" class="post-nav-link">
+      <button>{{ page.next.title | truncatewords: 5 }} &raquo;</button>
+    </a>
+  {% endif %}
+</div>

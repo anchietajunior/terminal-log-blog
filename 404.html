@@ -1,0 +1,27 @@
+---
+layout: default
+title: "Error 404"
+window_title: "Error"
+permalink: /404.html
+---
+<div class="error-page">
+  <div class="window" style="max-width: 400px; margin: 20px auto;">
+    <div class="title-bar">
+      <div class="title-bar-text">Error</div>
+      <div class="title-bar-controls">
+        <button aria-label="Close"></button>
+      </div>
+    </div>
+    <div class="window-body" style="padding: 16px; display: flex; gap: 16px; align-items: flex-start;">
+      <span style="font-size: 48px; line-height: 1;">&#10060;</span>
+      <div>
+        <p style="font-weight: 700; margin: 0 0 8px 0;">File not found</p>
+        <p style="font-size: 12px; margin: 0 0 12px 0;">
+          Windows cannot find 'C:\Blog\{{ page.url }}'.
+          Make sure you typed the name correctly, and then try again.
+        </p>
+        <a href="{{ '/' | relative_url }}"><button class="default">OK</button></a>
+      </div>
+    </div>
+  </div>
+</div>
