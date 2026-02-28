@@ -8,6 +8,7 @@ author:
 
 permalink: /:year/:month/:day/:title/
 timezone: America/Sao_Paulo
+future: true
 
 markdown: kramdown
 highlighter: rouge
