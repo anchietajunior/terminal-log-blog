@@ -9,6 +9,9 @@ window_title: "C:\\Blog — Explorer"
   <p>{{ site.description }}</p>
 </div>
 
+{% assign en_posts = site.posts | where: "lang", "en" %}
+{% assign pt_posts = site.posts | where: "lang", "pt-br" %}
+
 <div class="sunken-panel" style="overflow: auto;">
   <div class="file-list-header">
     <span></span>
@@ -17,8 +20,12 @@ window_title: "C:\\Blog — Explorer"
     <span>Type</span>
   </div>
   <ul class="file-list">
-    {% for post in site.posts %}
-    <li class="file-list-row">
+    {% if en_posts.size > 0 %}
+    <li class="file-list-section" data-lang="en">
+      <span>&#127468;&#127463; English ({{ en_posts.size }})</span>
+    </li>
+    {% for post in en_posts %}
+    <li class="file-list-row" data-lang="en">
       <a href="{{ post.url | relative_url }}">
         <span class="file-icon">&#128462;</span>
         <span>{{ post.title }}</span>
@@ -33,5 +40,28 @@ window_title: "C:\\Blog — Explorer"
       </a>
     </li>
     {% endfor %}
+    {% endif %}
+
+    {% if pt_posts.size > 0 %}
+    <li class="file-list-section" data-lang="pt-br">
+      <span>&#127463;&#127479; Portugu&ecirc;s ({{ pt_posts.size }})</span>
+    </li>
+    {% for post in pt_posts %}
+    <li class="file-list-row" data-lang="pt-br">
+      <a href="{{ post.url | relative_url }}">
+        <span class="file-icon">&#128462;</span>
+        <span>{{ post.title }}</span>
+        <span>{{ post.date | date: "%m/%d/%Y" }}</span>
+        <span>
+          {% if post.categories.size > 0 %}
+            {{ post.categories | first }}
+          {% else %}
+            post
+          {% endif %}
+        </span>
+      </a>
+    </li>
+    {% endfor %}
+    {% endif %}
   </ul>
 </div>

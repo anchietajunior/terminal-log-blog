@@ -26,6 +26,35 @@ if (startBtn && startMenu) {
   });
 }
 
+// Language filter
+var langBtns = document.querySelectorAll('.lang-btn');
+var activeLang = null;
+
+langBtns.forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var lang = btn.getAttribute('data-lang');
+
+    if (activeLang === lang) {
+      // Deselect — show all
+      activeLang = null;
+      langBtns.forEach(function (b) { b.classList.remove('active'); });
+    } else {
+      activeLang = lang;
+      langBtns.forEach(function (b) {
+        b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+      });
+    }
+
+    document.querySelectorAll('.file-list-row, .file-list-section').forEach(function (row) {
+      if (!activeLang) {
+        row.style.display = '';
+      } else {
+        row.style.display = row.getAttribute('data-lang') === activeLang ? '' : 'none';
+      }
+    });
+  });
+});
+
 // Terminal labels — detect language from highlight class
 var langNames = {
   ruby: 'ruby',
