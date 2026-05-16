@@ -160,19 +160,54 @@ Em um projeto que trabalha com agentes, ADRs cumprem um papel duplo: orientam o 
 
 ---
 
+## PRDs (Product Requirements Documents)
+
+**PRD** significa *Product Requirements Document*. É o documento mais "alto" da família: descreve **o que o produto precisa fazer e por quê**, do ponto de vista do **usuário e do negócio** — sem se comprometer com decisões técnicas. Onde a spec responde "como esse endpoint se comporta", o PRD responde "por que essa feature existe e qual problema do usuário ela resolve".
+
+Um PRD típico tem:
+
+- **Problema** — qual dor do usuário ou do negócio estamos atacando.
+- **Persona / contexto de uso** — quem usa, em que momento, com qual objetivo.
+- **Métricas de sucesso** — como saberemos que funcionou (adoção, conversão, redução de ticket de suporte).
+- **Escopo da v1** — o conjunto mínimo de comportamento que entrega valor.
+- **Fora de escopo** — o que fica para depois (ou nunca).
+- **Riscos e perguntas em aberto** — o que ainda precisa ser validado.
+
+No fluxo com agentes, o PRD costuma ser o ponto de partida: a partir dele você (ou um agente como o `to-prd` do Claude Code) deriva um RFC para discutir a abordagem técnica, depois um ou mais ADRs registrando decisões e, por fim, specs detalhadas de implementação. **O PRD ancora a intenção; todo o resto se conecta de volta a ele.**
+
+<div class="chat">
+  <div class="chat-message jose">
+    <div class="chat-avatar">JA</div>
+    <div>
+      <div class="chat-name">José</div>
+      <div class="chat-bubble">Pra projetos pequenos ou pessoais, escrever PRD não é overkill? Eu sou o usuário, o engenheiro e o PM ao mesmo tempo.</div>
+    </div>
+  </div>
+  <div class="chat-message claude">
+    <div class="chat-avatar">C</div>
+    <div>
+      <div class="chat-name">Claude</div>
+      <div class="chat-bubble">Não precisa virar um documento de 10 páginas — o valor do PRD não é o template, é a <strong>separação entre "o que queremos resolver" e "como vamos resolver"</strong>. Mesmo num side project, escrever 10 linhas declarando problema + persona + métrica de sucesso evita que você gaste três fins de semana construindo uma feature que ninguém (nem você) usa. Exercício: para o próximo recurso que você for adicionar neste blog, escreve um mini-PRD com três bullets — <em>problema</em> ("não consigo achar posts antigos por tópico"), <em>métrica</em> ("eu acho um post de 2020 em menos de 10 segundos"), <em>fora de escopo</em> ("busca full-text, paginação, filtros combinados"). Esse documento de 30 segundos vai brigar com você cada vez que aparecer a tentação de adicionar features extras. Leitura recomendada: <strong>"Shape Up"</strong> da Basecamp (basecamp.com/shapeup) — eles chamam de <em>pitch</em>, mas o espírito é o mesmo do PRD enxuto.</div>
+    </div>
+  </div>
+</div>
+
+---
+
 ## RFCs (Request for Comments)
 
 **RFC** vem de *Request for Comments* — formato cunhado pela IETF nos anos 70 para discutir mudanças em padrões da internet. No contexto de empresas de software (Rust, Stripe, Squarespace, Basecamp), virou o nome do **documento de proposta que precede uma mudança grande**.
 
-A diferença prática entre RFC, spec e ADR:
+A diferença prática entre PRD, RFC, ADR e spec:
 
 | Documento | Quando | O que captura |
 |-----------|--------|----------------|
-| **RFC**   | Antes de decidir | A proposta, alternativas consideradas, discussão aberta |
+| **PRD**   | Antes de tudo | O problema do usuário/negócio e o que o produto deve fazer |
+| **RFC**   | Antes de decidir | A proposta técnica, alternativas consideradas, discussão aberta |
 | **ADR**   | Depois de decidir | A decisão tomada e o porquê |
 | **Spec**  | Antes de implementar | O comportamento esperado da feature |
 
-Em um time saudável, um RFC vira um (ou vários) ADRs depois da discussão, e cada ADR pode gerar uma ou mais specs de implementação. **O harness se beneficia de todos esses artefatos**: quanto mais texto bem-organizado existir no repositório descrevendo intenção e racionalidade, melhor o agente consegue navegar e decidir.
+Em um time saudável, um PRD origina um RFC, o RFC discutido vira um (ou vários) ADRs, e cada ADR pode gerar uma ou mais specs de implementação. **O harness se beneficia de todos esses artefatos**: quanto mais texto bem-organizado existir no repositório descrevendo intenção e racionalidade, melhor o agente consegue navegar e decidir.
 
 ---
 
@@ -317,7 +352,7 @@ O harness é quem aplica essas permissões: intercepta a tool antes da execuçã
 Repare na lista do que percorremos:
 
 - **Janela de contexto** — quanto cabe.
-- **Specs, ADRs, RFCs** — o que precisa ser construído e por quê.
+- **PRDs, RFCs, ADRs, Specs** — o que precisa ser construído e por quê, em camadas que vão do problema do usuário até o comportamento detalhado.
 - **Rules** — convenções sempre ativas.
 - **Skills** — procedimentos sob demanda.
 - **Tools e MCP** — ações no mundo.
