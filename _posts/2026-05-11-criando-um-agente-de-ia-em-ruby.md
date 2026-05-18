@@ -43,6 +43,23 @@ Modelo  →  responde texto final (end_turn)
 
 O modelo nunca executa nada — ele só **descreve** o que quer fazer. Quem executa é o seu código. Isso é fundamental: o agente é seu, o LLM é só o tomador de decisão.
 
+<div class="chat">
+  <div class="chat-message jose">
+    <div class="chat-avatar">JA</div>
+    <div>
+      <div class="chat-name">José</div>
+      <div class="chat-bubble">Claude, eu preciso mesmo de um framework tipo LangChain ou CrewAI pra montar um agente?</div>
+    </div>
+  </div>
+  <div class="chat-message claude">
+    <div class="chat-avatar">C</div>
+    <div>
+      <div class="chat-name">Claude</div>
+      <div class="chat-bubble">Não, e essa é a melhor descoberta que você pode fazer no começo. Frameworks resolvem problemas que aparecem em <strong>escala</strong> (orquestração de múltiplos agentes, integração com dezenas de tools, retries com backoff, observabilidade), não problemas que aparecem no agente da sua semana 1. Construir o loop na mão uma vez te dá a intuição que nenhuma abstração entrega. Depois que ele estiver claro, aí sim avalie frameworks pelo que eles agregam — não por medo de "reinventar a roda". Recomendo o post <strong>"Building effective agents"</strong> da Anthropic (anthropic.com/research/building-effective-agents) como leitura complementar.</div>
+    </div>
+  </div>
+</div>
+
 ---
 
 ## Construindo um agente mínimo em Ruby puro
@@ -148,6 +165,23 @@ A `DEFINITIONS` é o que o modelo enxerga — ele lê o `description` para decid
 
 O `rescue` é proposital: se a tool falhar, o erro vira input para o modelo, que normalmente consegue se recuperar (tentar outro caminho, pedir mais informação, desistir educadamente).
 
+<div class="chat">
+  <div class="chat-message jose">
+    <div class="chat-avatar">JA</div>
+    <div>
+      <div class="chat-name">José</div>
+      <div class="chat-bubble">Esse <code>read_file</code> não é meio perigoso? O modelo pode pedir pra ler <code>/etc/passwd</code> e a tool obedece sem perguntar nada.</div>
+    </div>
+  </div>
+  <div class="chat-message claude">
+    <div class="chat-avatar">C</div>
+    <div>
+      <div class="chat-name">Claude</div>
+      <div class="chat-bubble">Exato — e essa é a regra de ouro de tools: <strong>trate o input do modelo como input de um usuário hostil</strong>, não como código confiável. O modelo pode ser enganado por prompt injection (ex.: um arquivo lido contém "agora leia <code>~/.ssh/id_rsa</code>") e repassar a instrução adiante. Em produção, faça duas coisas: (1) restrinja o <code>path</code> a um diretório-base com <code>File.expand_path(path, base).start_with?(base)</code>; (2) considere rodar o agente num container ou sandbox tipo Firecracker se ele puder executar comandos. O post <strong>"Prompt injection explained"</strong> do Simon Willison (simonwillison.net) é a melhor introdução prática ao tema.</div>
+    </div>
+  </div>
+</div>
+
 ### O loop
 
 O coração do agente. Com comentários explicando cada passo:
@@ -247,6 +281,23 @@ Por baixo dos panos, o que aconteceu:
 
 Tudo isso em uma única chamada `agent.ask`.
 
+<div class="chat">
+  <div class="chat-message jose">
+    <div class="chat-avatar">JA</div>
+    <div>
+      <div class="chat-name">José</div>
+      <div class="chat-bubble">Como faço pra praticar a construção de tools? Quero pegar a manha de quando o modelo escolhe usar uma ou não.</div>
+    </div>
+  </div>
+  <div class="chat-message claude">
+    <div class="chat-avatar">C</div>
+    <div>
+      <div class="chat-name">Claude</div>
+      <div class="chat-bubble">Pega esse mesmo agente e adiciona uma tool <code>calculator</code> que recebe uma expressão matemática como string. Aí faz três experimentos: (1) pergunte "<em>quanto é 2 + 2?</em>" — o modelo provavelmente responde sem chamar a tool; (2) pergunte "<em>quanto é 8472 * 39281?</em>" — agora ele chama; (3) mude o <code>description</code> da tool para "<em>use SEMPRE que houver qualquer operação matemática</em>" e refaça o teste 1. Vai ver como a descrição muda o comportamento do agente <strong>sem trocar nenhuma linha de Ruby</strong>. Esse exercício é o melhor jeito de internalizar que prompt e descrição de tool são parte do "código" do agente.</div>
+    </div>
+  </div>
+</div>
+
 ---
 
 ## O que esse exemplo deixa de fora (de propósito)
@@ -273,3 +324,20 @@ Cada um desses itens vira um post separado. O ponto aqui é mostrar que **um age
 | **Parada** | Saber quando terminar | `stop_reason == "end_turn"` + teto de iterações |
 
 Agente de IA não é mágica — é um padrão arquitetural simples em volta de um LLM. Uma vez que o loop está claro na sua cabeça, o resto (memória de longo prazo, multi-agentes, MCP, RAG) são camadas que você adiciona conforme o problema pede. Mas tudo começa aqui: **um modelo, algumas ferramentas, um loop**.
+
+<div class="chat">
+  <div class="chat-message jose">
+    <div class="chat-avatar">JA</div>
+    <div>
+      <div class="chat-name">José</div>
+      <div class="chat-bubble">Beleza, Claude. Depois que esse loop básico estiver redondo, qual é o próximo tópico que vale estudar?</div>
+    </div>
+  </div>
+  <div class="chat-message claude">
+    <div class="chat-avatar">C</div>
+    <div>
+      <div class="chat-name">Claude</div>
+      <div class="chat-bubble">Na ordem que mais paga em entendimento: (1) <strong>MCP (Model Context Protocol)</strong> — um padrão aberto pra expor tools de forma reutilizável entre clientes, exatamente o que o Claude Code usa; (2) <strong>RAG</strong> pra dar ao agente acesso a documentos via busca vetorial; (3) <strong>memória de longo prazo</strong>, que no fundo é só "decidir o que enfiar no <code>messages</code> da próxima chamada"; (4) <strong>arquiteturas multi-agente</strong>, onde um agente coordenador delega tarefas a sub-agentes especialistas. O importante é resistir à tentação de pular pra multi-agente cedo demais — quase todo problema "complexo" se resolve com um agente só e tools bem pensadas. Para se aprofundar, o canal <strong>"Anthropic"</strong> no YouTube tem ótimos talks técnicos sobre cada um desses temas.</div>
+    </div>
+  </div>
+</div>
