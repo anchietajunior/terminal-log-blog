@@ -1,0 +1,57 @@
+---
+layout: default
+title: Posts
+permalink: /posts/
+---
+<div class="container">
+  <header class="posts-header">
+    <h1>Posts</h1>
+    <p>Notas sobre engenharia de software, IA aplicada e o que aprendo ensinando.</p>
+  </header>
+
+  <div class="lang-filter" role="group" aria-label="Language filter">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="pt-br">PT-BR</button>
+  </div>
+
+  {% assign en_posts = site.posts | where: "lang", "en" %}
+  {% assign pt_posts = site.posts | where: "lang", "pt-br" %}
+
+  {% if pt_posts.size > 0 %}
+  <section class="post-group" data-lang-group="pt-br">
+    <h2 class="post-group-title">Português ({{ pt_posts.size }})</h2>
+    <ul class="post-list">
+      {% for post in pt_posts %}
+      <li class="post-list-item" data-lang="pt-br">
+        <a class="post-list-link" href="{{ post.url | relative_url }}">
+          <span class="post-list-date">{{ post.date | date: "%d %b %Y" }}</span>
+          <span class="post-list-title">{{ post.title }}</span>
+          <span class="post-list-cat">
+            {% if post.categories.size > 0 %}{{ post.categories | first }}{% else %}post{% endif %}
+          </span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if en_posts.size > 0 %}
+  <section class="post-group" data-lang-group="en">
+    <h2 class="post-group-title">English ({{ en_posts.size }})</h2>
+    <ul class="post-list">
+      {% for post in en_posts %}
+      <li class="post-list-item" data-lang="en">
+        <a class="post-list-link" href="{{ post.url | relative_url }}">
+          <span class="post-list-date">{{ post.date | date: "%d %b %Y" }}</span>
+          <span class="post-list-title">{{ post.title }}</span>
+          <span class="post-list-cat">
+            {% if post.categories.size > 0 %}{{ post.categories | first }}{% else %}post{% endif %}
+          </span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</div>

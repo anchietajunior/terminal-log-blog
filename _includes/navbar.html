@@ -1,0 +1,13 @@
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="{{ '/' | relative_url }}" class="site-brand">
+      <span class="site-brand-dot"></span>José Anchieta
+    </a>
+    <div class="site-nav-links">
+      {% assign current = page.url | default: '/' %}
+      <a href="{{ '/' | relative_url }}"{% if current == '/' %} class="active"{% endif %}>Serviços</a>
+      <a href="{{ '/posts/' | relative_url }}"{% if current contains '/posts' or page.layout == 'post' %} class="active"{% endif %}>Posts</a>
+      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+    </div>
+  </div>
+</nav>

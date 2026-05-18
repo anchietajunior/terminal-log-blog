@@ -1,67 +1,77 @@
 ---
 layout: default
-title: Home
-window_title: "C:\\Blog — Explorer"
+title: Serviços
 ---
-<div class="home-header">
-  <h1>&#128187; {{ site.title }}</h1>
-  <p class="home-bio">{{ site.author.bio }}</p>
-  <p>{{ site.description }}</p>
-</div>
+<div class="container">
+  <section class="hero">
+    <p class="hero-eyebrow">Software · IA · Formação</p>
+    <h1 class="hero-headline">Engenharia de software, mentoria em IA e formação técnica de desenvolvedores.</h1>
+    <p class="hero-sub">Mais de 15 anos construindo produto em Ruby on Rails. Mestrando em Computação Inteligente. Disponível para projetos, mentoria e treinamento.</p>
+    <div class="hero-cta">
+      <a href="mailto:santosjr87@gmail.com" class="btn-primary">Conversar sobre um projeto</a>
+      <a href="{{ '/posts/' | relative_url }}" class="btn-secondary">Ler posts &rarr;</a>
+    </div>
+  </section>
 
-{% assign en_posts = site.posts | where: "lang", "en" %}
-{% assign pt_posts = site.posts | where: "lang", "pt-br" %}
+  <section class="about-section">
+    <h2>Serviços</h2>
+    <ul class="service-list">
+      <li class="service-item">
+        <h3>Engenharia de software sob demanda</h3>
+        <p>Construção e manutenção de aplicações web em <strong>Ruby on Rails</strong> e <strong>Hotwire</strong>. Modelagem de domínio, performance, integrações e times pequenos que entregam. Foco em sistemas que precisam funcionar bem em produção, não em demos.</p>
+      </li>
+      <li class="service-item">
+        <h3>Mentoria em IA aplicada</h3>
+        <p>Acompanhamento individual ou em grupo para desenvolvedores e empreendedores que querem usar IA de verdade — entendendo o que está por baixo, não só consumindo ferramentas. Fundamentos, agentes, integração com produto e decisões de arquitetura.</p>
+      </li>
+      <li class="service-item">
+        <h3>Aulas e formação técnica</h3>
+        <p>Treinamentos in-company e cursos sob medida em algoritmos, desenvolvimento web, banco de dados, segurança da informação e IA aplicada. Material prático, voltado para o que o time vai usar na semana seguinte.</p>
+      </li>
+    </ul>
+  </section>
 
-<div class="sunken-panel" style="overflow: auto;">
-  <div class="file-list-header">
-    <span></span>
-    <span>Name</span>
-    <span>Date</span>
-    <span>Type</span>
-  </div>
-  <ul class="file-list">
-    {% if en_posts.size > 0 %}
-    <li class="file-list-section" data-lang="en">
-      <span>&#127468;&#127463; English ({{ en_posts.size }})</span>
-    </li>
-    {% for post in en_posts %}
-    <li class="file-list-row" data-lang="en">
-      <a href="{{ post.url | relative_url }}">
-        <span class="file-icon">&#128462;</span>
-        <span>{{ post.title }}</span>
-        <span>{{ post.date | date: "%m/%d/%Y" }}</span>
-        <span>
-          {% if post.categories.size > 0 %}
-            {{ post.categories | first }}
-          {% else %}
-            post
-          {% endif %}
-        </span>
-      </a>
-    </li>
-    {% endfor %}
-    {% endif %}
+  <section class="about-section">
+    <h2>Stack técnica</h2>
+    <ul class="stack-list">
+      <li>Ruby on Rails &amp; Hotwire</li>
+      <li>PostgreSQL · Sidekiq · Redis</li>
+      <li>Turbo Native (iOS / Android)</li>
+      <li>LLMs &amp; agentes (Claude API, DSPy.rb)</li>
+      <li>Modelagem de domínio &amp; system design</li>
+      <li>Elasticsearch · AWS</li>
+    </ul>
+  </section>
 
-    {% if pt_posts.size > 0 %}
-    <li class="file-list-section" data-lang="pt-br">
-      <span>&#127463;&#127479; Portugu&ecirc;s ({{ pt_posts.size }})</span>
-    </li>
-    {% for post in pt_posts %}
-    <li class="file-list-row" data-lang="pt-br">
-      <a href="{{ post.url | relative_url }}">
-        <span class="file-icon">&#128462;</span>
-        <span>{{ post.title }}</span>
-        <span>{{ post.date | date: "%m/%d/%Y" }}</span>
-        <span>
-          {% if post.categories.size > 0 %}
-            {{ post.categories | first }}
-          {% else %}
-            post
-          {% endif %}
-        </span>
-      </a>
-    </li>
-    {% endfor %}
-    {% endif %}
-  </ul>
+  <section class="about-section">
+    <h2>Onde já trabalhei</h2>
+    <ul class="company-list">
+      <li><span class="company-name">LightLabs</span><span class="company-where">Senior Software Engineer · 2024–atual</span></li>
+      <li><span class="company-name">UniRios</span><span class="company-where">Professor universitário · 2024–atual</span></li>
+      <li><span class="company-name">Planet Argon (EUA)</span><span class="company-where">Hotwire Native &amp; Rails · 2024</span></li>
+      <li><span class="company-name">Spacelist (Canadá)</span><span class="company-where">Senior Software Engineer · 2022–2024</span></li>
+      <li><span class="company-name">Zartis (Madrid)</span><span class="company-where">Senior Software Engineer · 2021–2022</span></li>
+    </ul>
+  </section>
+
+  <section class="about-section cta-section">
+    <h2>Conversar</h2>
+    <div class="cta-card">
+      <div class="cta-portrait" aria-hidden="true">
+        {% comment %}When a real photo exists, place it at assets/images/jose.jpg and uncomment below.{% endcomment %}
+        {% comment %}<img src="{{ '/assets/images/jose.jpg' | relative_url }}" alt="José Anchieta">{% endcomment %}
+        <span>JA</span>
+      </div>
+      <div class="cta-body">
+        <p class="cta-line"><strong>José Anchieta</strong> &middot; Paulo Afonso, BA</p>
+        <p class="cta-sub">A maneira mais rápida é por e-mail. Respondo em até 48h úteis.</p>
+        <ul class="contact-list">
+          <li><a href="mailto:santosjr87@gmail.com">santosjr87@gmail.com</a></li>
+          <li><a href="https://linkedin.com/in/anchietajunior" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/anchietajunior" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.youtube.com/@anchietajunior" target="_blank" rel="noopener">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 </div>

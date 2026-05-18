@@ -1,42 +1,42 @@
 ---
 layout: default
-window_title: "{{ page.title }} — Notepad"
 ---
-<article class="post-article">
-  <div class="post-header-bar">
-    <span class="post-date-badge">{{ page.date | date: "%d/%m/%Y" }}</span>
-    {% for cat in page.categories %}
-      <span class="post-category-badge">{{ cat }}</span>
-    {% endfor %}
-  </div>
+<div class="container">
+  <article class="post-article">
+    <div class="post-meta">
+      <time>{{ page.date | date: "%d %b %Y" }}</time>
+      {% for cat in page.categories %}
+        <span class="dot"></span>
+        <span class="post-category">{{ cat }}</span>
+      {% endfor %}
+    </div>
 
-  <h1 class="post-title">{{ page.title }}</h1>
-  {% if page.subtitle %}
-    <p class="post-subtitle">{{ page.subtitle }}</p>
-  {% endif %}
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.subtitle %}
+      <p class="post-subtitle">{{ page.subtitle }}</p>
+    {% endif %}
 
-  <hr>
+    <div class="post-content">
+      {{ content }}
+    </div>
 
-  <div class="post-content">
-    {{ content }}
-  </div>
+    <div class="post-footer">
+      <p>Escrito por <strong>{{ page.author | default: site.author.name }}</strong> em {{ page.date | date: "%d de %B de %Y" }}.</p>
+    </div>
+  </article>
 
-  <hr>
-
-  <div class="post-footer-meta">
-    <p>Written by <strong>{{ page.author | default: site.author.name }}</strong> on {{ page.date | date: "%B %d, %Y" }}.</p>
-  </div>
-</article>
-
-<div class="post-nav-bar">
-  {% if page.previous.url %}
-    <a href="{{ page.previous.url | relative_url }}" class="post-nav-link">
-      <button>&laquo; {{ page.previous.title | truncatewords: 5 }}</button>
-    </a>
-  {% endif %}
-  {% if page.next.url %}
-    <a href="{{ page.next.url | relative_url }}" class="post-nav-link">
-      <button>{{ page.next.title | truncatewords: 5 }} &raquo;</button>
-    </a>
-  {% endif %}
+  <nav class="post-nav">
+    {% if page.previous.url %}
+      <a href="{{ page.previous.url | relative_url }}" class="post-nav-link prev">
+        <span class="nav-direction">&larr; Anterior</span>
+        {{ page.previous.title | truncatewords: 8 }}
+      </a>
+    {% endif %}
+    {% if page.next.url %}
+      <a href="{{ page.next.url | relative_url }}" class="post-nav-link next">
+        <span class="nav-direction">Próximo &rarr;</span>
+        {{ page.next.title | truncatewords: 8 }}
+      </a>
+    {% endif %}
+  </nav>
 </div>
