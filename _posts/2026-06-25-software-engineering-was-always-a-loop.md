@@ -8,8 +8,6 @@ layout: post
 lang: en
 ---
 
-# Software Engineering Was Always a Loop. We Only Now See It Clearly.
-
 ## What Is a Loop in Computer Science
 
 Before talking about software engineering as a loop, it helps to be precise about what a loop *is* in the discipline that gave us the word.
