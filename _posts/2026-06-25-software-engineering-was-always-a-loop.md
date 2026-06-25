@@ -10,6 +10,22 @@ lang: en
 
 # Software Engineering Was Always a Loop. We Only Now See It Clearly.
 
+## What Is a Loop in Computer Science
+
+Before talking about software engineering as a loop, it helps to be precise about what a loop *is* in the discipline that gave us the word.
+
+In computer science, a **loop** is a control structure that repeats a block of instructions while a condition holds, and stops once that condition is no longer satisfied. It is not an incidental feature of programming languages — it is one of the primitives from which every program is built. The *structured program theorem* (Böhm and Jacopini, 1966) established that any computable function can be expressed with just three control structures: **sequence, selection, and iteration**. The loop is iteration. Remove it and you can no longer express computation in general.
+
+But the deepest lesson about loops in the canonical bibliography isn't *how to write* one — it's *how to reason* about one. In *Introduction to Algorithms* (Cormen, Leiserson, Rivest, and Stein — the standard reference at MIT, Stanford, and most CS programs), loops are understood through the idea of a **loop invariant**: a property that is true before the loop begins and stays true at the start of every iteration. The authors validate a loop with three questions:
+
+- **Initialization** — is the invariant true before the first iteration?
+- **Maintenance** — if it holds before an iteration, does it still hold before the next one?
+- **Termination** — when the loop finally stops, does the invariant tell us something useful?
+
+This is the part worth carrying into the rest of the post. A loop is not just repetition. It is repetition around something that stays constant — the invariant — while the state advances, step by step, toward a result. Hold on to that image: **the structure stays fixed while the position inside it changes.** That is exactly what is happening to the software engineer.
+
+---
+
 ## Introduction
 
 Software engineering has always worked as a cycle: requirements, building, validation, adjustment, and back to the start. This pattern has existed from the beginning. What changed over the past few years is not the loop itself, but **the engineer's position within it**. They stopped executing every stage by hand, moved on to refining instructions that an AI executes, and are now beginning to design systems that iterate on their own. Understanding this shift is understanding what is happening in software development today.
