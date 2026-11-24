@@ -8,6 +8,7 @@ math: true
 mermaid: true
 layout: post
 lang: pt-br
+topic: ferramentas
 ---
 
 Não é comum reinstalar o MacOS e reconfigurar todo o ambiente de desenvolvimento,

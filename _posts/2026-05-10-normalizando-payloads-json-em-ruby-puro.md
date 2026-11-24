@@ -6,6 +6,7 @@ categories: [Ruby, Design Patterns]
 tags: [ruby, design-patterns, adapter, factory, minitest]
 layout: post
 lang: pt-br
+topic: engenharia-de-software
 ---
 
 # O problema

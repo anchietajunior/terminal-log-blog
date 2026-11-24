@@ -6,6 +6,7 @@ categories: [AI, Tools]
 tags: [claude-code, ai, productivity, setup]
 layout: post
 lang: pt-br
+topic: inteligencia-artificial
 ---
 
 # Claude Code no meu dia a dia

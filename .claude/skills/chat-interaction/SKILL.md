@@ -82,10 +82,6 @@ Action: Read the math post, find the "Autovalores e Autovetores" section, and ap
 
 ## CSS Dependencies
 
-The chat styles are defined in `assets/css/main.css` under the section `/* --- Chat Interaction (José + Claude) --- */`. The styles include:
-- `.chat` — container with flex column layout
-- `.chat-message.jose` — left-aligned, white rounded bubble, dark circular avatar with "JA"
-- `.chat-message.claude` — right-aligned, terracotta-soft rounded bubble, terracotta circular avatar with "C"
-- Responsive styles for mobile at 720px breakpoint
+The chat styles are defined in `assets/css/main.css` under the section `/* --- Chat Interaction (José + Claude) --- */`.
 
 The HTML format is stable across theme changes; only the visual styling evolves. Do not change the class names or markup structure when adding new interactions.

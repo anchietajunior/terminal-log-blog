@@ -9,6 +9,7 @@ layout: post
 mermaid: true
 image: https://i.ibb.co/BrqwTJL/ruby-algorithm.png
 lang: pt-br
+topic: algoritmos
 ---
 
 ![Algorith](https://i.ibb.co/BrqwTJL/ruby-algorithm.png)

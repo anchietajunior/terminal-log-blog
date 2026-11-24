@@ -1,0 +1,9 @@
+<ul class="post-list">
+  {% for post in include.posts %}
+  <li lang="{{ post.lang }}">
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    {% if post.lang == "en" %}<span class="post-list-language">EN</span>{% endif %}
+    <time class="post-list-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d/%m/%Y" }}</time>
+  </li>
+  {% endfor %}
+</ul>

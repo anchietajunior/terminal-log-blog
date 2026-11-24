@@ -6,6 +6,7 @@ categories: [AI, Engineering]
 tags: [ai, harness, agents, llm, spec-driven-development, claude-code]
 layout: post
 lang: pt-br
+topic: inteligencia-artificial
 ---
 
 # Harness: o "arnês" que segura o cavalo

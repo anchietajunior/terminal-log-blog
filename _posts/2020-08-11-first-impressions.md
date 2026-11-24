@@ -9,6 +9,7 @@ mermaid: true
 layout: post
 image: https://i.ibb.co/vPkM8KH/elixir-hello.png
 lang: pt-br
+topic: engenharia-de-software
 ---
 
 ![Elixir](https://i.ibb.co/vPkM8KH/elixir-hello.png)

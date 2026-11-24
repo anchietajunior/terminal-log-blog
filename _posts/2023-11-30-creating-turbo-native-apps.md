@@ -9,6 +9,7 @@ mermaid: true
 layout: post
 image: https://i.postimg.cc/V6j7BW08/ios.png
 lang: pt-br
+topic: ruby-e-rails
 ---
 
 [![ios.png](https://i.postimg.cc/V6j7BW08/ios.png)](https://postimg.cc/Q9dkj5q4)

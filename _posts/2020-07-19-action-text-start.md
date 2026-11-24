@@ -9,6 +9,7 @@ mermaid: true
 layout: post
 image: https://i.ibb.co/vDZ2CPM/action-text.png
 lang: pt-br
+topic: ruby-e-rails
 ---
 
 ![ActionText](https://i.ibb.co/vDZ2CPM/action-text.png)

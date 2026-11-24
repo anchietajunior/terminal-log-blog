@@ -9,6 +9,7 @@ mermaid: true
 image: https://i.ibb.co/0Y6RqSr/ruby-pubsub.png
 layout: post
 lang: pt-br
+topic: arquitetura
 ---
 
 ![PubSub](https://i.ibb.co/0Y6RqSr/ruby-pubsub.png)

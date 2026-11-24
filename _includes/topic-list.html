@@ -1,0 +1,14 @@
+<nav aria-label="Tópicos">
+  <p class="section-label">Tópicos</p>
+  <ul>
+    {% for topic in site.data.topics %}
+      {% assign topic_posts = site.posts | where: "topic", topic.slug %}
+      {% if topic_posts.size > 0 %}
+      <li>
+        <a href="{{ '/posts/' | relative_url }}#{{ topic.slug }}">{{ topic.name }}</a>
+        <span class="sidebar-count">({{ topic_posts.size }})</span>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>

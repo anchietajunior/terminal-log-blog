@@ -1,0 +1,18 @@
+{% comment %}
+  ponytail: flat list of the h1/h2 headings, read from the rendered HTML
+  (kramdown emits <h2 id="slug">Title</h2>). Use a TOC plugin if nested h3 entries are needed.
+{% endcomment %}
+{% assign html_with_uniform_headings = include.html | replace: '<h1 id="', '<h2 id="' | replace: '</h1>', '</h2>' %}
+{% assign heading_chunks = html_with_uniform_headings | split: '<h2 id="' %}
+{% if heading_chunks.size > 2 %}
+<nav class="table-of-contents" aria-label="Neste post">
+  <p class="section-label">Neste post</p>
+  <ul>
+    {% for heading_chunk in heading_chunks offset: 1 %}
+      {% assign heading_id = heading_chunk | split: '"' | first %}
+      {% assign heading_text = heading_chunk | split: '</h2>' | first | remove_first: heading_id | remove_first: '">' | strip_html %}
+      <li><a href="#{{ heading_id }}">{{ heading_text }}</a></li>
+    {% endfor %}
+  </ul>
+</nav>
+{% endif %}

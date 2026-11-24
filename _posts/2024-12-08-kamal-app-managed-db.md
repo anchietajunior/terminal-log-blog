@@ -9,6 +9,7 @@ mermaid: true
 image: https://i.ibb.co/WcjMWr2/3c6700b4-2080-4b38-aa87-1f105c2bb47c.webp
 layout: post
 lang: en
+topic: ruby-e-rails
 ---
 
 ![Kamal Managed](https://i.ibb.co/WcjMWr2/3c6700b4-2080-4b38-aa87-1f105c2bb47c.webp)

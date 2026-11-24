@@ -9,6 +9,7 @@ mermaid: true
 layout: post
 image: https://149351115.v2.pressablecdn.com/wp-content/uploads/2020/11/blog-the-macro-problem-with-micro-services.png
 lang: pt-br
+topic: arquitetura
 ---
 
 ![Microservices](https://149351115.v2.pressablecdn.com/wp-content/uploads/2020/11/blog-the-macro-problem-with-micro-services.png)

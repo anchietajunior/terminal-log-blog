@@ -9,6 +9,7 @@ mermaid: true
 image: https://i.ibb.co/6nJYNyS/Group-4.png
 layout: post
 lang: pt-br
+topic: ruby-e-rails
 ---
 
 O [Stimulus](https://stimulusjs.org/) já não é mais nenhuma novidade na comunidade Ruby e Rails. De fato a cada dia se prova uma ferramenta muito útil e principalmente fácil e divertida de se utilizar quando precisamos de "reatividade" nas páginas dos nossos projetos mas não queremos/precisamos da complexidade adicionada por um React, Angular ou VueJS da vida. Como a própria descrição no site oficial diz: "Um framework Javascript modesto para o HTML que você já tem".

@@ -9,6 +9,7 @@ mermaid: true
 layout: post
 image: https://www.conectaai.com/wp-content/uploads/2019/05/1_mSE6ialQ-9TcGUz5ts_FMA.png
 lang: pt-br
+topic: ferramentas
 ---
 
 ![Elixir](https://www.conectaai.com/wp-content/uploads/2019/05/1_mSE6ialQ-9TcGUz5ts_FMA.png)

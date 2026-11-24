@@ -9,6 +9,7 @@ mermaid: true
 image: https://i.ibb.co/2y8YPrH/rspec.png
 layout: post
 lang: pt-br
+topic: ruby-e-rails
 ---
 
 Sou um defensor do TDD e recomendo a todos o uso das práticas do TDD em seus projetos, lógico, depende do tamanho do sistema e da complexidade das funcionalidades do mesmo, mas isso é um assunto pra outra hora, aqui vai uma configuração inicial do RSpec, biblioteca mais utilizada para testes no ecossistema Ruby e Rails, então, let's do it!

@@ -9,6 +9,7 @@ mermaid: true
 layout: post
 image: https://d33x644h9xoqir.cloudfront.net/wp-content/uploads/sites/2/2019/02/como-construir-relacoes-produtivas-com-seus-colegas-de-trabalho.jpg
 lang: pt-br
+topic: engenharia-de-software
 ---
 
 <img class="post-image" src="https://d33x644h9xoqir.cloudfront.net/wp-content/uploads/sites/2/2019/02/como-construir-relacoes-produtivas-com-seus-colegas-de-trabalho.jpg" />

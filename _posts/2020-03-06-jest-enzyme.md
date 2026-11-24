@@ -8,6 +8,7 @@ math: true
 mermaid: true
 layout: post
 lang: pt-br
+topic: ferramentas
 ---
 
 Caso esteja buscando alguma ferramenta de testes para iniciar sua trajetória no TDD em aplicações React, aqui vai uma ótima dupla, Jest + Enzyme. Nesse post, vamos criar uma app React simples utilizando o ***create-react-app*** e criar nosso primeiro teste utilizando essas duas libs.

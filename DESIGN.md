@@ -1,126 +1,52 @@
-# DESIGN — Novo tema minimalista
+# DESIGN — Plataforma de ensino, tema monoespaçado
 
 ## Direção
-- Tirar o esqueleto Windows 98 (98.css, desktop, taskbar, ícones).
-- Foco em leitura: muito branco, tipografia generosa, único acento.
-- Site é um portfólio + diário técnico, não um simulador de SO.
+- O site é uma plataforma de ensino: tecnologia, engenharia de software, IA e arquitetura.
+- Referência visual: flaviocopes.com. Texto primeiro, listas densas de links, uma só fonte monoespaçada, cantos retos, sem sombras.
+- Usar a largura da tela: página de 1180px com barra lateral, em vez da coluna única de 720px.
+- Sem JavaScript.
 
 ## Estrutura de páginas
-- `/` (Home) — **About** com serviços e especialidades.
-- `/posts/` — Lista de artigos agrupada por idioma (EN / PT-BR).
-- `/posts/:year/:month/:day/:title/` — Post individual.
+- `/` — frase de abertura, tópicos na barra lateral, últimos 15 posts.
+- `/posts/` — todos os posts agrupados por tópico, com filtro de idioma.
+- `/:year/:month/:day/:title/` — post, com o índice "Neste post" na barra lateral.
+- `/sobre/` — serviços, stack, experiência e contato (a antiga home).
 
-`about.md` deixa de existir como URL separada (vira a home). Redirect simples não é necessário enquanto o site não está publicado em domínio próprio.
-
-## Navbar
-Topo fixo, fundo branco, borda inferior fina:
+## Layout
 ```
-José                                                    Posts   RSS
+JA José Anchieta                              POSTS  SOBRE  RSS
+
+TÓPICOS / NESTE POST   |  conteúdo principal
+(260px, fixa ao rolar) |  (o resto da largura)
 ```
-- "José" volta para `/`.
-- "Posts" leva para `/posts/`.
-- "RSS" leva para `/feed.xml`.
+- Abaixo de 860px a barra lateral sobe para cima do conteúdo e o índice do post some.
 
-## Home (About)
-Estrutura em uma coluna no mobile, duas colunas no desktop:
-
-```
-+-----------------------------------------------+
-| [foto pequena]   Olá, sou o José Anchieta.    |
-|                  Engenheiro de software,      |
-|                  professor universitário e    |
-|                  mentor em IA.                |
-+-----------------------------------------------+
-| O que faço                                    |
-|   • Engenharia de software (Ruby on Rails)    |
-|   • Aulas e formação de devs juniores         |
-|   • Mentoria em IA aplicada a produto         |
-+-----------------------------------------------+
-| Experiência resumida (timeline curta)         |
-+-----------------------------------------------+
-| Como conversar comigo (e-mail, GitHub, etc.)  |
-+-----------------------------------------------+
-```
-
-### Posição da foto — recomendação
-Recomendo **foto à direita, alinhada ao primeiro bloco de texto** (desktop) e **acima do texto** (mobile). Motivos:
-1. O olho ocidental varre da esquerda pra direita; texto importante (quem sou + o que faço) entra primeiro, foto reforça depois.
-2. Mantém a navbar como elemento dominante no topo — a foto não compete com ela.
-3. No mobile não tem como fugir do empilhamento; ter a foto antes do texto dá identidade imediata.
-
-Alternativa válida: foto à esquerda dentro de um círculo pequeno (~120px) ao lado do nome — mais "cartão de visita". Vou implementar essa, é mais discreta.
-
-A foto em si ainda não existe nos assets. Vou deixar um placeholder com as iniciais "JA" estilizado para que apareça algo até o usuário enviar a imagem real (que deve ir em `assets/images/jose.jpg`).
-
-## Posts (lista)
-Layout linha-a-linha, sem grid de "explorer". Por idioma:
-
-```
-Posts
-─────
-
-🇧🇷 Português
-  17 mai 2026   Criando um agente de IA em Ruby
-  15 mai 2026   O que é uma harness para engenheiros
-  …
-
-🇺🇸 English
-  …
-```
-
-Filtro EN / PT-BR continua via botões discretos abaixo do título.
-
-## Post individual
-- Título grande, data + categoria menores em cima.
-- Largura de leitura ~680px (medida confortável: 65-75 caracteres).
-- Blocos de código mantêm a vibe terminal escuro (já temos isso e funciona bem para o brand "Terminal Log"). Bordas suaves em vez de pixeladas.
-- Chat (mascote) — mantém a metáfora "José à esquerda / Claude à direita", mas com balões arredondados, sombra suave, sem bordas outset.
-
-## Footer
-Centralizado, fonte pequena, três linhas:
-```
-José Anchieta  ·  Paulo Afonso, BA — Brasil
-GitHub  ·  YouTube  ·  LinkedIn  ·  santosjr87@gmail.com
-© 2026
-```
+## Tópicos
+- O tópico é o eixo de ensino. A lista e a ordem ficam em `_data/topics.yml`.
+- Cada post tem um `topic`. O link do tópico leva para `/posts/#slug`.
 
 ## Tipografia
-- Body: **IBM Plex Sans** (já carregado).
-- Código: **IBM Plex Mono** (já carregado).
-- Tamanhos:
-  - body 17px
-  - h1 32px (home/post title)
-  - h2 22px
-  - h3 18px
-- Line-height 1.7 em texto corrido.
+- IBM Plex Mono em tudo.
+- Corpo 15px, texto do post 16px, barra lateral e metadados 13px.
+- Títulos em maiúsculas: página 24px, h1 do post 22px, h2 19px, h3 16px.
 
 ## Paleta
-- `--bg: #fafaf7` (off-white levemente quente)
-- `--surface: #ffffff`
-- `--text: #1a1a1a`
-- `--muted: #6b6b6b`
-- `--border: #e5e5e0`
-- `--accent: #b85c38` (laranja-terracota — diferencia sem ser agressivo, combina com o "C" do mascote)
-- `--accent-soft: #f5e6dc`
-- `--code-bg: #1e1e1e`
+- `--background: #fcfcf9`
+- `--surface: #f2f2ec`
+- `--text: #111111`
+- `--muted: #66665f`
+- `--border: #d6d6ce`
+- `--link: #9a4a2c` (terracota escuro, contraste 6:1 sobre o fundo)
+- `--accent: #b85c38`, `--accent-soft: #f5e6dc`
+- `--code-background: #1e1e1e`
 
 ## Mascote (chat-interaction)
-O skill `chat-interaction` continua válido — as classes `.chat`, `.chat-message.jose`, `.chat-message.claude`, `.chat-avatar`, `.chat-bubble`, `.chat-name` são mantidas. Só muda o visual:
-- Avatares em círculo cheio, sem borda 3D.
-- Balões com `border-radius` arredondado e sombra fina em vez de borda outset.
-- José: fundo cinza claro, avatar com cor neutra escura.
-- Claude: fundo `--accent-soft`, avatar `--accent` — reforça que é o mascote da casa.
-
-Nenhuma mudança no HTML que o skill insere; só CSS.
-
-## Itens explicitamente removidos
-- `_includes/desktop-icons.html`
-- `_includes/taskbar.html`
-- `_includes/toolbar.html`
-- 98.css (CDN)
-- Filtro de janela / clock / start menu
+- As classes e o HTML do skill `chat-interaction` não mudam; só o CSS.
+- Avatares e balões quadrados. José à esquerda em `--surface`; Claude à direita em `--accent-soft`.
 
 ## O que fica para depois
-- Foto real do José (substituir placeholder).
-- Tema escuro (não pedido, fácil de adicionar via `prefers-color-scheme`).
-- URL do YouTube real (placeholder por enquanto).
+- Busca de posts.
+- Trilhas ou séries (posts em sequência dentro de um tópico).
+- Uma página por tópico, se `/posts/` ficar longa demais.
+- Tema escuro.
+- Foto real do José.

@@ -8,6 +8,7 @@ math: true
 mermaid: true
 layout: post
 lang: pt-br
+topic: ferramentas
 ---
 
 Pra quem não conhece, o Neovim é um fork do Vim, o famoso e "milenar" editor de textos utilizado tanto por profissionais de infra que configuram distros Linux em nível hard até programadores front-end que usam React ou Vue e suas infinitas ferramentas.

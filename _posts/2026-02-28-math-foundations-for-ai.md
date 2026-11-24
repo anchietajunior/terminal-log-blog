@@ -6,6 +6,7 @@ categories: [AI, Mathematics]
 tags: [ai, machine-learning, deep-learning, math]
 layout: post
 lang: pt-br
+topic: inteligencia-artificial
 ---
 
 # Por que matemática importa para IA?

@@ -8,6 +8,7 @@ math: true
 mermaid: true
 layout: post
 lang: pt-br
+topic: ruby-e-rails
 ---
 
 # Entendendo Contexto de Execução no Rails

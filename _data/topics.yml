@@ -1,0 +1,27 @@
+- slug: inteligencia-artificial
+  name: Inteligência Artificial
+  description: Fundamentos, agentes, LLMs e IA aplicada ao trabalho de engenharia.
+
+- slug: engenharia-de-software
+  name: Engenharia de Software
+  description: Práticas, design de código, revisão e o ofício de construir software.
+
+- slug: arquitetura
+  name: Arquitetura
+  description: Estilos de arquitetura, padrões de integração e decisões de sistema.
+
+- slug: ruby-e-rails
+  name: Ruby e Rails
+  description: A linguagem, o framework e o ecossistema Hotwire na prática.
+
+- slug: algoritmos
+  name: Algoritmos
+  description: Problemas clássicos resolvidos e explicados passo a passo.
+
+- slug: ferramentas
+  name: Ferramentas
+  description: Editor, terminal, Git e o ambiente de desenvolvimento.
+
+- slug: carreira
+  name: Carreira
+  description: Produtividade, trabalho remoto e o lado humano da profissão.

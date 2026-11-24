@@ -6,6 +6,7 @@ categories: [AI, Engineering]
 tags: [ai, software-engineering, agents, llm, loop]
 layout: post
 lang: en
+topic: engenharia-de-software
 ---
 
 ## What Is a Loop in Computer Science

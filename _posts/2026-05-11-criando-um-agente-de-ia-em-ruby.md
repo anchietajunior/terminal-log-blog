@@ -6,6 +6,7 @@ categories: [AI, Ruby]
 tags: [ai, agents, llm, ruby, claude, anthropic]
 layout: post
 lang: pt-br
+topic: inteligencia-artificial
 ---
 
 # O que é um agente de IA?
